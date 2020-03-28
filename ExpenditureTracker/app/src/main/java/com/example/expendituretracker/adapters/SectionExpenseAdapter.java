@@ -1,13 +1,13 @@
+package com.example.expendituretracker.adapters.;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.github.ematiyuk.expensetracer.R;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract;
-import com.github.ematiyuk.expensetracer.utils.Utils;
-import com.twotoasters.sectioncursoradapter.SectionCursorAdapter;
+
+import com.example.expendituretracker.R;
 
 public class SectionExpenseAdapter extends SectionCursorAdapter {
     private String mCurrency;
@@ -24,7 +24,7 @@ public class SectionExpenseAdapter extends SectionCursorAdapter {
     @Override
     protected Object getSectionFromCursor(Cursor cursor) {
         String dateStr = cursor.getString(cursor.getColumnIndexOrThrow(ExpensesContract.Expenses.DATE));
-        return Utils.getSystemFormatDateString(mContext, dateStr);
+        return com.github.ematiyuk.expensetracer.utils.Utils.getSystemFormatDateString(mContext, dateStr);
     }
 
     @Override
