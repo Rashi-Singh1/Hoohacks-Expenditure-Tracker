@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         scan_bill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScanBillActivity.class);
+                Intent intent = new Intent(MainActivity.this, ActivityScanBill.class);
                 startActivity(intent);
             }
         });
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         add_manual_entry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ScanBillActivity.class);
+                Intent intent = new Intent(MainActivity.this, ActivityScanBill.class);
                 startActivity(intent);
             }
         });

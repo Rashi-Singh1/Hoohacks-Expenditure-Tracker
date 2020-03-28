@@ -1,10 +1,11 @@
 package com.example.expendituretracker;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -12,10 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,11 +23,10 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextDetector;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-public class ScanBillActivity extends AppCompatActivity {
+public class ActivityScanBill extends AppCompatActivity {
+
     private Button capture_image, detect_text;
     private ImageView imageView;
     private TextView textView;
@@ -78,39 +74,40 @@ public class ScanBillActivity extends AppCompatActivity {
             } catch (IOException ex) {
 
                 // Error occurred while creating the File
-                Toast.makeText(ScanBillActivity.this,"Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityScanBill.this,"Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("Error : ", ex.getMessage());
             }
 
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.expendituretracker.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }
-            else{
-                Toast.makeText(ScanBillActivity.this,"Error: photo file NULL", Toast.LENGTH_SHORT).show();
-                Log.d("Error : ","photoFile null");
-            }
+//            // Continue only if the File was successfully created
+//            if (photoFile != null) {
+//                Uri photoURI = FileProvider.getUriForFile(this,
+//                        "com.example.expendituretracker.fileprovider",
+//                        photoFile);
+//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+//                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+//            }
+//            else{
+//                Toast.makeText(ScanBillActivity.this,"Error: photo file NULL", Toast.LENGTH_SHORT).show();
+//                Log.d("Error : ","photoFile null");
+//            }
         }
     }
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",   /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        currentPhotoPath = image.getAbsolutePath();
-        return image;
+//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//        String imageFileName = "JPEG_" + timeStamp + "_";
+//        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+//        File image = File.createTempFile(
+//                imageFileName,  /* prefix */
+//                ".jpg",   /* suffix */
+//                storageDir      /* directory */
+//        );
+//
+//        // Save a file: path for use with ACTION_VIEW intents
+//        currentPhotoPath = image.getAbsolutePath();
+//        return image;
+        return null;
     }
 
 //
@@ -142,7 +139,7 @@ public class ScanBillActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ScanBillActivity.this,"Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityScanBill.this,"Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("Error : ", e.getMessage());
             }
         });
@@ -151,7 +148,7 @@ public class ScanBillActivity extends AppCompatActivity {
     private void displayTextFromImage(FirebaseVisionText firebaseVisionText) {
         List<FirebaseVisionText.Block> blocklist = firebaseVisionText.getBlocks();
         if(blocklist.size() == 0){
-            Toast.makeText(ScanBillActivity.this,"No text found in image", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ActivityScanBill.this,"No text found in image", Toast.LENGTH_SHORT).show();
         }else{
             for(FirebaseVisionText.Block block : firebaseVisionText.getBlocks()){
                 String text = block.getText();
