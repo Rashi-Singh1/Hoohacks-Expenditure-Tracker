@@ -39,8 +39,8 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         tabLayout.addTab(tabLayout.newTab().setText("All"));
-        tabLayout.addTab(tabLayout.newTab().setText("Recieved"));
-        tabLayout.addTab(tabLayout.newTab().setText("Sent"));
+        //tabLayout.addTab(tabLayout.newTab().setText("Recieved"));
+      //  tabLayout.addTab(tabLayout.newTab().setText("Sent"));
 
 
 
@@ -97,15 +97,15 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-        SMSListener.bindListener(new Common.OTPListener() {
-            @Override
-            public void onOTPReceived(String extractedOTP) {
-
-                MyTextView_Roboto_Regular simpleEditText = (MyTextView_Roboto_Regular) findViewById(R.id.amount1);
-                simpleEditText.setText(extractedOTP);
-
-            }
-        });
+//        SMSListener.bindListener(new Common.OTPListener() {
+//            @Override
+//            public void onOTPReceived(String extractedOTP) {
+//
+//                MyTextView_Roboto_Regular simpleEditText = (MyTextView_Roboto_Regular) findViewById(R.id.amount1);
+//                simpleEditText.setText(extractedOTP);
+//
+//            }
+//        });
 
 
 

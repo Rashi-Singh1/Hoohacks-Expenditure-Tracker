@@ -35,14 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        SMSListener.bindListener(new Common.OTPListener() {
-            @Override
-            public void onOTPReceived(String extractedOTP) {
-                TextView simpleEditText = (TextView) findViewById(R.id.edittext);
-                simpleEditText.setText(extractedOTP);
-
-            }
-        });
+//        SMSListener.bindListener(new Common.OTPListener() {
+//            @Override
+//            public void onOTPReceived(String extractedOTP) {
+//               // TextView simpleEditText = (TextView) findViewById(R.id.edittext);
+//              //  simpleEditText.setText(extractedOTP);
+//
+//            }
+//        });
     }
 
     private boolean checkAndRequestPermissions()

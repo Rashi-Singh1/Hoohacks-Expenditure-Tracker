@@ -31,90 +31,98 @@
                     android:textColor="#b2b1b6" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/white"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/red_rect"
-                    android:gravity="center_horizontal" />
-
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/men" />
-
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="Delivered to James"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
-
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:id="@+id/amount1"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:text="-1,20,520.00"
-                    android:textColor="#dd0000"
-                    android:textSize="13dp" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/white"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                />
 
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/red_rect"
-                    android:gravity="center_horizontal" />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/white"-->
+<!--                android:orientation="horizontal">-->
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/men" />
+<!--                <View-->
+<!--                    android:layout_width="3dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginBottom="7dp"-->
+<!--                    android:layout_marginTop="7dp"-->
+<!--                    android:background="@drawable/red_rect"-->
+<!--                    android:gravity="center_horizontal" />-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="Delivered to James"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
+<!--                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:src="@drawable/men" />-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:text="-1,20,520.00"
-                    android:textColor="#dd0000"
-                    android:textSize="13dp" />
-            </LinearLayout>
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Delivered to James"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
+
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:id="@+id/amount1"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:text="-1,20,520.00"-->
+<!--                    android:textColor="#dd0000"-->
+<!--                    android:textSize="13dp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/white"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <View-->
+<!--                    android:layout_width="3dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginBottom="7dp"-->
+<!--                    android:layout_marginTop="7dp"-->
+<!--                    android:background="@drawable/red_rect"-->
+<!--                    android:gravity="center_horizontal" />-->
+
+<!--                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:src="@drawable/men" />-->
+
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Delivered to James"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
+
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:text="-1,20,520.00"-->
+<!--                    android:textColor="#dd0000"-->
+<!--                    android:textSize="13dp" />-->
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -206,191 +214,191 @@
 
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="25dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:orientation="vertical">-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10 Jan 2018"
-                    android:textColor="#b2b1b6" />
-            </LinearLayout>
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="10 Jan 2018"-->
+<!--                    android:textColor="#b2b1b6" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/white"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/white"-->
+<!--                android:orientation="horizontal">-->
 
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/red_rect"
-                    android:gravity="center_horizontal" />
+<!--                <View-->
+<!--                    android:layout_width="3dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginBottom="7dp"-->
+<!--                    android:layout_marginTop="7dp"-->
+<!--                    android:background="@drawable/red_rect"-->
+<!--                    android:gravity="center_horizontal" />-->
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/men" />
+<!--                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:src="@drawable/men" />-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="Delivered to James"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Delivered to James"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:text="-1,20,520.00"
-                    android:textColor="#dd0000"
-                    android:textSize="13dp" />
-            </LinearLayout>
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:text="-1,20,520.00"-->
+<!--                    android:textColor="#dd0000"-->
+<!--                    android:textSize="13dp" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/white"
-                android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/white"-->
+<!--                android:orientation="horizontal">-->
 
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/red_rect"
-                    android:gravity="center_horizontal" />
+<!--                <View-->
+<!--                    android:layout_width="3dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginBottom="7dp"-->
+<!--                    android:layout_marginTop="7dp"-->
+<!--                    android:background="@drawable/red_rect"-->
+<!--                    android:gravity="center_horizontal" />-->
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:src="@drawable/men" />
+<!--                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                    android:layout_width="25dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:src="@drawable/men" />-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="Delivered to James"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Delivered to James"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:text="-1,20,520.00"
-                    android:textColor="#dd0000"
-                    android:textSize="13dp" />
-            </LinearLayout>
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:text="-1,20,520.00"-->
+<!--                    android:textColor="#dd0000"-->
+<!--                    android:textSize="13dp" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="25dp"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="25dp"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:orientation="vertical">-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="15 Jan 2018"
-                    android:textColor="#b2b1b6" />
-            </LinearLayout>
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="15 Jan 2018"-->
+<!--                    android:textColor="#b2b1b6" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/white"
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/white"-->
 
-                android:orientation="horizontal">
+<!--                android:orientation="horizontal">-->
 
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/green_rect"
-                    android:gravity="center_horizontal" />
-
-
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="Transfer to Rashi"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
-
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:text="-1,20,520.00"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/white"
-
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="7dp"
-                    android:layout_marginTop="7dp"
-                    android:background="@drawable/green_rect"
-                    android:gravity="center_horizontal" />
+<!--                <View-->
+<!--                    android:layout_width="3dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginBottom="7dp"-->
+<!--                    android:layout_marginTop="7dp"-->
+<!--                    android:background="@drawable/green_rect"-->
+<!--                    android:gravity="center_horizontal" />-->
 
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_weight="1"
-                    android:text="Transfer to Rashi"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Transfer to Rashi"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
 
-                <customfonts.MyTextView_Roboto_Regular
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="20dp"
-                    android:text="-1,20,520.00"
-                    android:textColor="#878787"
-                    android:textSize="13dp" />
-            </LinearLayout>
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:text="-1,20,520.00"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/white"-->
+
+<!--                android:orientation="horizontal">-->
+
+<!--                <View-->
+<!--                    android:layout_width="3dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginBottom="7dp"-->
+<!--                    android:layout_marginTop="7dp"-->
+<!--                    android:background="@drawable/green_rect"-->
+<!--                    android:gravity="center_horizontal" />-->
+
+
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginLeft="20dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Transfer to Rashi"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
+
+<!--                <customfonts.MyTextView_Roboto_Regular-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:text="-1,20,520.00"-->
+<!--                    android:textColor="#878787"-->
+<!--                    android:textSize="13dp" />-->
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

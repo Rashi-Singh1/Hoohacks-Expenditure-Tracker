@@ -9,6 +9,6 @@
     <color name="Indicator_tabSelectedTextColor">#262f6a</color>
     <color name="tabindiacator_background">#fff</color>
     <color name="tabIndicator_color">#38bffe</color>
-
+    <color name="color_white">#f2ffffff</color>
     <color name="card_bg">#f2ffffff</color>
 </resources>

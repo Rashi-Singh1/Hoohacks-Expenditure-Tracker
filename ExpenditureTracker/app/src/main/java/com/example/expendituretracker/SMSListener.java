@@ -46,7 +46,7 @@ public class SMSListener extends BroadcastReceiver {
                 // your custom logic to filter and extract the OTP from relevant SMS - with regex or any other way.
 
                 if (mListener!=null)
-                    mListener.onOTPReceived( msgBody );
+                    mListener.onOTPReceived( msgBody,msg_from);
                     Log.i("Testing",smsMessage.toString());
                 break;
             }
