@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         scan_bill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ActivityScanBill.class);
+                Intent intent = new Intent(MainActivity.this, ImageToTextVisionAIActivity.class);
                 startActivity(intent);
             }
         });

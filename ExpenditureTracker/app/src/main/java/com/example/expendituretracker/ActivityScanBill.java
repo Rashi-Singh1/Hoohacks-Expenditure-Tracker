@@ -52,8 +52,8 @@ public class ActivityScanBill extends AppCompatActivity {
         capture_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                dispatchTakePictureIntent_Bitmap();
-                dispatchTakePictureIntent();
+                dispatchTakePictureIntent_Bitmap();
+//                dispatchTakePictureIntent();
                 textView.setText("");
             }
         });
@@ -65,38 +65,38 @@ public class ActivityScanBill extends AppCompatActivity {
             }
         });
     }
-
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-
-            // Create the File where the photo should go
-            File photoFile = null;
-
-            try {
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-
-                // Error occurred while creating the File
-                Toast.makeText(ActivityScanBill.this,"Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("Error : ", ex.getMessage());
-            }
-
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.expendituretracker.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }
-            else{
-                Toast.makeText(ActivityScanBill.this,"Error: photo file NULL", Toast.LENGTH_SHORT).show();
-                Log.d("Error : ","photoFile null");
-            }
-        }
-    }
+//
+//    private void dispatchTakePictureIntent() {
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        // Ensure that there's a camera activity to handle the intent
+//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//
+//            // Create the File where the photo should go
+//            File photoFile = null;
+//
+//            try {
+//                photoFile = createImageFile();
+//            } catch (IOException ex) {
+//
+//                // Error occurred while creating the File
+//                Toast.makeText(ActivityScanBill.this,"Error: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+//                Log.d("Error : ", ex.getMessage());
+//            }
+//
+//            // Continue only if the File was successfully created
+//            if (photoFile != null) {
+//                Uri photoURI = FileProvider.getUriForFile(this,
+//                        "com.example.expendituretracker.fileprovider",
+//                        photoFile);
+//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+//                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+//            }
+//            else{
+//                Toast.makeText(ActivityScanBill.this,"Error: photo file NULL", Toast.LENGTH_SHORT).show();
+//                Log.d("Error : ","photoFile null");
+//            }
+//        }
+//    }
 
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -114,13 +114,13 @@ public class ActivityScanBill extends AppCompatActivity {
         return image;
     }
 
-//
-//    private void dispatchTakePictureIntent_Bitmap() {
-//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//        }
-//    }
+
+    private void dispatchTakePictureIntent_Bitmap() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
