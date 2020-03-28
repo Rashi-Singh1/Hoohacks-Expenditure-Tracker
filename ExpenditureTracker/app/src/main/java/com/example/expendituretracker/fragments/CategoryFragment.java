@@ -1,16 +1,11 @@
+import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.app.AlertDialog;
+
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,12 +16,17 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Categories;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Expenses;
-import com.github.ematiyuk.expensetracer.R;
-import com.github.ematiyuk.expensetracer.activities.CategoryEditActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
+import com.example.expendituretracker.R;
+
 
 public class CategoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     private ListView mCategoriesView;
@@ -126,12 +126,12 @@ public class CategoryFragment extends Fragment implements LoaderManager.LoaderCa
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projectionFields = new String[] {
-                Categories._ID,
-                Categories.NAME
+                ExpensesContract.Categories._ID,
+                ExpensesContract.Categories.NAME
         };
 
         return new CursorLoader(getActivity(),
-                Categories.CONTENT_URI,
+                ExpensesContract.Categories.CONTENT_URI,
                 projectionFields,
                 null,
                 null,
@@ -160,7 +160,7 @@ public class CategoryFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     private int deleteSingleCategory(long categoryId) {
-        Uri uri = ContentUris.withAppendedId(Categories.CONTENT_URI, categoryId);
+        Uri uri = ContentUris.withAppendedId(ExpensesContract.Categories.CONTENT_URI, categoryId);
 
         // Defines a variable to contain the number of rows deleted
         int rowsDeleted;
@@ -183,7 +183,7 @@ public class CategoryFragment extends Fragment implements LoaderManager.LoaderCa
         String[] selectionArgs = { String.valueOf(categoryId) };
 
         return getActivity().getContentResolver().delete(
-                Expenses.CONTENT_URI,
+                ExpensesContract.Expenses.CONTENT_URI,
                 selection,
                 selectionArgs
         );

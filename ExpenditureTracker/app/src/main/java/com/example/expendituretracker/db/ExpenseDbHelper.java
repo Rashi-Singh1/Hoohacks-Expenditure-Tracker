@@ -1,11 +1,12 @@
+package com.example.expendituretracker.db;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.github.ematiyuk.expensetracer.R;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Categories;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Expenses;
+import com.example.expendituretracker.R;
+
 
 public class ExpenseDbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
@@ -41,8 +42,8 @@ public class ExpenseDbHelper extends SQLiteOpenHelper {
     private static final class CategoriesTable {
         public static final String CREATE_TABLE_QUERY =
                 "CREATE TABLE " + CATEGORIES_TABLE_NAME + " (" +
-                Categories._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                Categories.NAME + " TEXT NOT NULL);";
+                ExpensesContract.Categories._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ExpensesContract.Categories.NAME + " TEXT NOT NULL);";
 
         public static final String DELETE_TABLE_QUERY =
                 "DROP TABLE IF EXISTS " + CATEGORIES_TABLE_NAME + ";";
@@ -51,7 +52,7 @@ public class ExpenseDbHelper extends SQLiteOpenHelper {
             String[] predefinedNames = ctx.getResources().getStringArray(R.array.predefined_categories);
             ContentValues values = new ContentValues();
             for (String name : predefinedNames) {
-                values.put(Categories.NAME, name);
+                values.put(ExpensesContract.Categories.NAME, name);
                 db.insert(CATEGORIES_TABLE_NAME, null, values);
             }
         }
@@ -60,10 +61,10 @@ public class ExpenseDbHelper extends SQLiteOpenHelper {
     private static final class ExpensesTable {
         public static final String CREATE_TABLE_QUERY =
                 "CREATE TABLE " + EXPENSES_TABLE_NAME + " (" +
-                Expenses._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                Expenses.VALUE + " FLOAT NOT NULL, " +
-                Expenses.DATE + " DATE NOT NULL, " +
-                Expenses.CATEGORY_ID + " INTEGER NOT NULL);";
+                ExpensesContract.Expenses._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ExpensesContract.Expenses.VALUE + " FLOAT NOT NULL, " +
+                ExpensesContract.Expenses.DATE + " DATE NOT NULL, " +
+                ExpensesContract.Expenses.CATEGORY_ID + " INTEGER NOT NULL);";
 
         public static final String DELETE_TABLE_QUERY =
                 "DROP TABLE IF EXISTS " + EXPENSES_TABLE_NAME + ";";

@@ -1,15 +1,12 @@
+package com.example.expendituretracker.fragments;
+
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.support.v7.widget.AppCompatSpinner;
+
+
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,11 +17,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Categories;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Expenses;
-import com.github.ematiyuk.expensetracer.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
+import com.example.expendituretracker.R;
 import com.github.ematiyuk.expensetracer.utils.Utils;
 
 import java.util.ArrayList;
@@ -94,7 +98,7 @@ public class ExpenseEditFragment extends Fragment implements LoaderManager.Loade
         mAdapter = new SimpleCursorAdapter(getActivity(),
                 android.R.layout.simple_spinner_item,
                 null,
-                new String[] { Categories.NAME },
+                new String[] { ExpensesContract.Categories.NAME },
                 new int[] { android.R.id.text1 },
                 0);
         // Specify the layout to use when the list of choices appears
@@ -193,20 +197,20 @@ public class ExpenseEditFragment extends Fragment implements LoaderManager.Loade
         switch (id) {
             case EXPENSE_LOADER_ID:
                 projectionFields = new String[] {
-                        Expenses._ID,
-                        Expenses.VALUE,
-                        Expenses.CATEGORY_ID
+                        ExpensesContract.Expenses._ID,
+                        ExpensesContract.Expenses.VALUE,
+                        ExpensesContract.Expenses.CATEGORY_ID
                 };
 
-                uri = ContentUris.withAppendedId(Expenses.CONTENT_URI, mExtraValue);
+                uri = ContentUris.withAppendedId(ExpensesContract.Expenses.CONTENT_URI, mExtraValue);
                 break;
             case CATEGORIES_LOADER_ID:
                 projectionFields = new String[] {
-                        Categories._ID,
-                        Categories.NAME
+                        ExpensesContract.Categories._ID,
+                        ExpensesContract.Categories.NAME
                 };
 
-                uri = Categories.CONTENT_URI;
+                uri = ExpensesContract.Categories.CONTENT_URI;
                 break;
         }
 
@@ -223,8 +227,8 @@ public class ExpenseEditFragment extends Fragment implements LoaderManager.Loade
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         switch (loader.getId()) {
             case EXPENSE_LOADER_ID:
-                int expenseValueIndex = data.getColumnIndex(Expenses.VALUE);
-                int expenseCategoryIdIndex = data.getColumnIndex(Expenses.CATEGORY_ID);
+                int expenseValueIndex = data.getColumnIndex(ExpensesContract.Expenses.VALUE);
+                int expenseCategoryIdIndex = data.getColumnIndex(ExpensesContract.Expenses.CATEGORY_ID);
 
                 data.moveToFirst();
                 mExpenseCategoryId = data.getLong(expenseCategoryIdIndex);
@@ -288,12 +292,12 @@ public class ExpenseEditFragment extends Fragment implements LoaderManager.Loade
 
     private void insertNewExpense() {
         ContentValues insertValues = new ContentValues();
-        insertValues.put(Expenses.VALUE, Float.parseFloat(mExpValueEditText.getText().toString()));
-        insertValues.put(Expenses.DATE, Utils.getDateString(new Date())); // Put current date (today)
-        insertValues.put(Expenses.CATEGORY_ID, mExpenseCategoryId);
+        insertValues.put(ExpensesContract.Expenses.VALUE, Float.parseFloat(mExpValueEditText.getText().toString()));
+        insertValues.put(ExpensesContract.Expenses.DATE, Utils.getDateString(new Date())); // Put current date (today)
+        insertValues.put(ExpensesContract.Expenses.CATEGORY_ID, mExpenseCategoryId);
 
         getActivity().getContentResolver().insert(
-                Expenses.CONTENT_URI,
+                ExpensesContract.Expenses.CONTENT_URI,
                 insertValues
         );
 
@@ -304,10 +308,10 @@ public class ExpenseEditFragment extends Fragment implements LoaderManager.Loade
 
     private void updateExpense(long id) {
         ContentValues updateValues = new ContentValues();
-        updateValues.put(Expenses.VALUE, Float.parseFloat(mExpValueEditText.getText().toString()));
-        updateValues.put(Expenses.CATEGORY_ID, mExpenseCategoryId);
+        updateValues.put(ExpensesContract.Expenses.VALUE, Float.parseFloat(mExpValueEditText.getText().toString()));
+        updateValues.put(ExpensesContract.Expenses.CATEGORY_ID, mExpenseCategoryId);
 
-        Uri expenseUri = ContentUris.withAppendedId(Expenses.CONTENT_URI, id);
+        Uri expenseUri = ContentUris.withAppendedId(ExpensesContract.Expenses.CONTENT_URI, id);
 
         getActivity().getContentResolver().update(
                 expenseUri,

@@ -1,3 +1,4 @@
+import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -6,12 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.app.AlertDialog;
+
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,12 +20,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Expenses;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.ExpensesWithCategories;
-import com.github.ematiyuk.expensetracer.R;
-import com.github.ematiyuk.expensetracer.adapters.SimpleExpenseAdapter;
-import com.github.ematiyuk.expensetracer.utils.Utils;
-import com.github.ematiyuk.expensetracer.activities.ExpenseEditActivity;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
+import com.example.expendituretracker.R;
+import com.example.expendituretracker.fragments.ExpenseEditFragment;
+import com.example.expendituretracker.fragments.SettingsFragment;
 
 import java.util.Date;
 
@@ -74,7 +74,7 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
                 prepareExpenseToCreate();
             }
         });
-        mTotalExpSumTextView.setText(Utils.formatToCurrency(0.0f));
+        mTotalExpSumTextView.setText(com.github.ematiyuk.expensetracer.utils.Utils.formatToCurrency(0.0f));
 
         registerForContextMenu(mExpensesView);
 
@@ -143,15 +143,15 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
         Uri uri = null;
         switch (id) {
             case SUM_LOADER_ID:
-                uri = ExpensesWithCategories.SUM_DATE_CONTENT_URI;
+                uri = ExpensesContract.ExpensesWithCategories.SUM_DATE_CONTENT_URI;
                 break;
             case LIST_LOADER_ID:
-                uri = ExpensesWithCategories.DATE_CONTENT_URI;
+                uri = ExpensesContract.ExpensesWithCategories.DATE_CONTENT_URI;
                 break;
         }
 
         // Retrieve today's date string
-        String today = Utils.getDateString(new Date());
+        String today = com.github.ematiyuk.expensetracer.utils.Utils.getDateString(new Date());
         String[] selectionArgs = { today };
 
         return new CursorLoader(getActivity(),
@@ -167,10 +167,10 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         switch (loader.getId()){
             case SUM_LOADER_ID:
-                int valueSumIndex = data.getColumnIndex(Expenses.VALUES_SUM);
+                int valueSumIndex = data.getColumnIndex(ExpensesContract.Expenses.VALUES_SUM);
                 data.moveToFirst();
                 float valueSum = data.getFloat(valueSumIndex);
-                mTotalExpSumTextView.setText(Utils.formatToCurrency(valueSum));
+                mTotalExpSumTextView.setText(com.github.ematiyuk.expensetracer.utils.Utils.formatToCurrency(valueSum));
                 break;
 
             case LIST_LOADER_ID:
@@ -186,7 +186,7 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
     public void onLoaderReset(Loader<Cursor> loader) {
         switch (loader.getId()) {
             case SUM_LOADER_ID:
-                mTotalExpSumTextView.setText(Utils.formatToCurrency(0.0f));
+                mTotalExpSumTextView.setText(com.github.ematiyuk.expensetracer.utils.Utils.formatToCurrency(0.0f));
                 break;
             case LIST_LOADER_ID:
                 mAdapter.swapCursor(null);
@@ -211,7 +211,7 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
     }
 
     private int deleteSingleExpense(long expenseId) {
-        Uri uri = ContentUris.withAppendedId(Expenses.CONTENT_URI, expenseId);
+        Uri uri = ContentUris.withAppendedId(ExpensesContract.Expenses.CONTENT_URI, expenseId);
 
         // Defines a variable to contain the number of rows deleted
         int rowsDeleted;

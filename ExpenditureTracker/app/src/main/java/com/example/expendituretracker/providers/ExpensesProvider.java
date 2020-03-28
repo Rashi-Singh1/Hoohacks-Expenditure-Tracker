@@ -1,3 +1,5 @@
+package com.example.expendituretracker.providers;
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -7,13 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 
-import com.github.ematiyuk.expensetracer.db.ExpenseDbHelper;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Categories;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Expenses;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.ExpensesWithCategories;
+import com.example.expendituretracker.db.ExpenseDbHelper;
 
-import static com.github.ematiyuk.expensetracer.db.ExpenseDbHelper.CATEGORIES_TABLE_NAME;
-import static com.github.ematiyuk.expensetracer.db.ExpenseDbHelper.EXPENSES_TABLE_NAME;
+import static com.example.expendituretracker.db.ExpenseDbHelper.CATEGORIES_TABLE_NAME;
+import static com.example.expendituretracker.db.ExpenseDbHelper.EXPENSES_TABLE_NAME;
+
 
 public class ExpensesProvider extends ContentProvider {
     public static final int EXPENSES = 10;
@@ -56,13 +56,13 @@ public class ExpensesProvider extends ContentProvider {
      * ON expenses.category_id = categories._id
      */
     private static final String BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY =
-            "SELECT " + EXPENSES_TABLE_NAME + "." + Expenses._ID + ", " +
-                    EXPENSES_TABLE_NAME + "." + Expenses.VALUE + ", " +
-                    CATEGORIES_TABLE_NAME + "." + Categories.NAME + ", " +
-                    EXPENSES_TABLE_NAME + "." + Expenses.DATE + " FROM " +
+            "SELECT " + EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses._ID + ", " +
+                    EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.VALUE + ", " +
+                    CATEGORIES_TABLE_NAME + "." + ExpensesContract.Categories.NAME + ", " +
+                    EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.DATE + " FROM " +
                     EXPENSES_TABLE_NAME + " JOIN " + CATEGORIES_TABLE_NAME + " ON " +
-                    EXPENSES_TABLE_NAME + "." + Expenses.CATEGORY_ID + " = " +
-                    CATEGORIES_TABLE_NAME + "." + Categories._ID;
+                    EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.CATEGORY_ID + " = " +
+                    CATEGORIES_TABLE_NAME + "." + ExpensesContract.Categories._ID;
 
     /**
      * <p>
@@ -91,7 +91,7 @@ public class ExpensesProvider extends ContentProvider {
             case CATEGORIES:
                 table = CATEGORIES_TABLE_NAME;
                 sortOrder = (sortOrder == null || sortOrder.isEmpty())
-                        ? Categories.DEFAULT_SORT_ORDER
+                        ? ExpensesContract.Categories.DEFAULT_SORT_ORDER
                         : sortOrder;
                 break;
 
@@ -99,7 +99,7 @@ public class ExpensesProvider extends ContentProvider {
             case CATEGORIES_ID:
                 table = CATEGORIES_TABLE_NAME;
                 // Defines selection criteria for the row to query
-                selection = Categories._ID + " = ?";
+                selection = ExpensesContract.Categories._ID + " = ?";
                 selectionArgs = new String[]{ uri.getLastPathSegment() };
                 break;
 
@@ -107,7 +107,7 @@ public class ExpensesProvider extends ContentProvider {
             case EXPENSES:
                 table = EXPENSES_TABLE_NAME;
                 sortOrder = (sortOrder == null || sortOrder.isEmpty())
-                        ? Expenses.DEFAULT_SORT_ORDER
+                        ? ExpensesContract.Expenses.DEFAULT_SORT_ORDER
                         : sortOrder;
                 break;
 
@@ -115,7 +115,7 @@ public class ExpensesProvider extends ContentProvider {
             case EXPENSES_ID:
                 table = EXPENSES_TABLE_NAME;
                 // Defines selection criteria for the row to query
-                selection = Expenses._ID + " = ?";
+                selection = ExpensesContract.Expenses._ID + " = ?";
                 selectionArgs = new String[]{ uri.getLastPathSegment() };
                 break;
 
@@ -138,7 +138,7 @@ public class ExpensesProvider extends ContentProvider {
                  */
                 rawQuery =
                         BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY + " WHERE " +
-                        EXPENSES_TABLE_NAME + "." + Expenses.DATE + " = ?";
+                        EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.DATE + " = ?";
 
                 return mDatabase.rawQuery(rawQuery, selectionArgs);
 
@@ -149,9 +149,9 @@ public class ExpensesProvider extends ContentProvider {
                  * FROM expenses WHERE expenses.date = ?
                  */
                 rawQuery =
-                        "SELECT SUM(" + EXPENSES_TABLE_NAME + "." + Expenses.VALUE + ") as " +
-                        Expenses.VALUES_SUM + " FROM " + EXPENSES_TABLE_NAME +
-                        " WHERE " + EXPENSES_TABLE_NAME + "." + Expenses.DATE + " = ?";
+                        "SELECT SUM(" + EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.VALUE + ") as " +
+                        ExpensesContract.Expenses.VALUES_SUM + " FROM " + EXPENSES_TABLE_NAME +
+                        " WHERE " + EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.DATE + " = ?";
 
                 return mDatabase.rawQuery(rawQuery, selectionArgs);
 
@@ -165,7 +165,7 @@ public class ExpensesProvider extends ContentProvider {
                  */
                 rawQuery =
                         BASE_SELECT_JOIN_EXPENSES_CATEGORIES_QUERY + " WHERE " +
-                        EXPENSES_TABLE_NAME + "." + Expenses.DATE + " BETWEEN ? AND ?";
+                        EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.DATE + " BETWEEN ? AND ?";
 
                 return mDatabase.rawQuery(rawQuery, selectionArgs);
 
@@ -176,9 +176,9 @@ public class ExpensesProvider extends ContentProvider {
                  * FROM expenses WHERE expense.date BETWEEN ? AND ?
                  */
                 rawQuery =
-                        "SELECT SUM(" + EXPENSES_TABLE_NAME + "." + Expenses.VALUE + ") as " +
-                        Expenses.VALUES_SUM + " FROM " + EXPENSES_TABLE_NAME +
-                        " WHERE " + EXPENSES_TABLE_NAME + "." + Expenses.DATE + " BETWEEN ? AND ?";
+                        "SELECT SUM(" + EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.VALUE + ") as " +
+                        ExpensesContract.Expenses.VALUES_SUM + " FROM " + EXPENSES_TABLE_NAME +
+                        " WHERE " + EXPENSES_TABLE_NAME + "." + ExpensesContract.Expenses.DATE + " BETWEEN ? AND ?";
 
                 return mDatabase.rawQuery(rawQuery, selectionArgs);
 
@@ -207,12 +207,12 @@ public class ExpensesProvider extends ContentProvider {
             // The incoming URI is for all of categories
             case CATEGORIES:
                 table = CATEGORIES_TABLE_NAME;
-                contentUri = Categories.CONTENT_URI;
+                contentUri = ExpensesContract.Categories.CONTENT_URI;
                 break;
             // The incoming URI is for all of expenses
             case EXPENSES:
                 table = EXPENSES_TABLE_NAME;
-                contentUri = Expenses.CONTENT_URI;
+                contentUri = ExpensesContract.Expenses.CONTENT_URI;
                 break;
             // The incoming URI is for a single row from categories
             case CATEGORIES_ID:
@@ -250,7 +250,7 @@ public class ExpensesProvider extends ContentProvider {
             case CATEGORIES_ID:
                 table = CATEGORIES_TABLE_NAME;
                 // Defines selection criteria for the row to delete
-                selection = Categories._ID + " = ?";
+                selection = ExpensesContract.Categories._ID + " = ?";
                 selectionArgs = new String[]{ uri.getLastPathSegment() };
                 break;
             // The incoming URI is for all of expenses
@@ -261,7 +261,7 @@ public class ExpensesProvider extends ContentProvider {
             case EXPENSES_ID:
                 table = EXPENSES_TABLE_NAME;
                 // Defines selection criteria for the row to delete
-                selection = Expenses._ID + " = ?";
+                selection = ExpensesContract.Expenses._ID + " = ?";
                 selectionArgs = new String[]{ uri.getLastPathSegment() };
                 break;
             // The incoming URI is for all of categories
@@ -294,14 +294,14 @@ public class ExpensesProvider extends ContentProvider {
             case CATEGORIES_ID:
                 table = CATEGORIES_TABLE_NAME;
                 // Defines selection criteria for the row to delete
-                selection = Categories._ID + " = ?";
+                selection = ExpensesContract.Categories._ID + " = ?";
                 selectionArgs = new String[]{ uri.getLastPathSegment() };
                 break;
             // The incoming URI is for a single row from expenses
             case EXPENSES_ID:
                 table = EXPENSES_TABLE_NAME;
                 // Defines selection criteria for the row to delete
-                selection = Expenses._ID + " = ?";
+                selection = ExpensesContract.Expenses._ID + " = ?";
                 selectionArgs = new String[]{ uri.getLastPathSegment() };
                 break;
             // The incoming URI is for all of categories
@@ -334,19 +334,19 @@ public class ExpensesProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case CATEGORIES:
-                return Categories.CONTENT_TYPE;
+                return ExpensesContract.Categories.CONTENT_TYPE;
             case CATEGORIES_ID:
-                return Categories.CONTENT_ITEM_TYPE;
+                return ExpensesContract.Categories.CONTENT_ITEM_TYPE;
             case EXPENSES:
-                return Expenses.CONTENT_TYPE;
+                return ExpensesContract.Expenses.CONTENT_TYPE;
             case EXPENSES_ID:
-                return Expenses.CONTENT_ITEM_TYPE;
+                return ExpensesContract.Expenses.CONTENT_ITEM_TYPE;
             case EXPENSES_WITH_CATEGORIES:
             case EXPENSES_WITH_CATEGORIES_DATE:
             case EXPENSES_WITH_CATEGORIES_DATE_RANGE:
             case EXPENSES_WITH_CATEGORIES_SUM_DATE:
             case EXPENSES_WITH_CATEGORIES_SUM_DATE_RANGE:
-                return ExpensesWithCategories.CONTENT_TYPE;
+                return ExpensesContract.ExpensesWithCategories.CONTENT_TYPE;
             default:
                 return null;
         }

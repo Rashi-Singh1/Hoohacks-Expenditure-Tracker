@@ -3,11 +3,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
+
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,8 +14,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Categories;
-import com.github.ematiyuk.expensetracer.R;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
+import com.example.expendituretracker.R;
+
 
 public class CategoryEditFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     public static final String EXTRA_EDIT_CATEGORY = "com.github.ematiyuk.expensetracer.edit_category";
@@ -117,11 +119,11 @@ public class CategoryEditFragment extends Fragment implements LoaderManager.Load
     @Override
     public CursorLoader onCreateLoader(int id, Bundle args) {
         String[] projectionFields = new String[] {
-                Categories._ID,
-                Categories.NAME
+                ExpensesContract.Categories._ID,
+                ExpensesContract.Categories.NAME
         };
 
-        Uri singleCategoryUri = ContentUris.withAppendedId(Categories.CONTENT_URI, mExtraValue);
+        Uri singleCategoryUri = ContentUris.withAppendedId(ExpensesContract.Categories.CONTENT_URI, mExtraValue);
 
         return new CursorLoader(getActivity(),
                 singleCategoryUri,
@@ -134,7 +136,7 @@ public class CategoryEditFragment extends Fragment implements LoaderManager.Load
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        int categoryNameIndex = data.getColumnIndex(Categories.NAME);
+        int categoryNameIndex = data.getColumnIndex(ExpensesContract.Categories.NAME);
         data.moveToFirst();
         String categoryName = data.getString(categoryNameIndex);
         mCatNameEditText.setText(categoryName);
@@ -147,10 +149,10 @@ public class CategoryEditFragment extends Fragment implements LoaderManager.Load
 
     private void insertNewCategory() {
         ContentValues insertValues = new ContentValues();
-        insertValues.put(Categories.NAME, mCatNameEditText.getText().toString());
+        insertValues.put(ExpensesContract.Categories.NAME, mCatNameEditText.getText().toString());
 
         getActivity().getContentResolver().insert(
-                Categories.CONTENT_URI,
+                ExpensesContract.Categories.CONTENT_URI,
                 insertValues
         );
 
@@ -161,9 +163,9 @@ public class CategoryEditFragment extends Fragment implements LoaderManager.Load
 
     private void updateCategory(long id) {
         ContentValues updateValues = new ContentValues();
-        updateValues.put(Categories.NAME, mCatNameEditText.getText().toString());
+        updateValues.put(ExpensesContract.Categories.NAME, mCatNameEditText.getText().toString());
 
-        Uri categoryUri = ContentUris.withAppendedId(Categories.CONTENT_URI, id);
+        Uri categoryUri = ContentUris.withAppendedId(ExpensesContract.Categories.CONTENT_URI, id);
 
         getActivity().getContentResolver().update(
                 categoryUri,

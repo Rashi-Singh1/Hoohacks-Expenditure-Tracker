@@ -4,12 +4,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.widget.PopupMenu;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,13 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.github.ematiyuk.expensetracer.R;
-import com.github.ematiyuk.expensetracer.activities.MainActivity;
-import com.github.ematiyuk.expensetracer.adapters.SectionExpenseAdapter;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.Expenses;
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract.ExpensesWithCategories;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.CursorLoader;
+import androidx.loader.content.Loader;
+
+
+import com.example.expendituretracker.MainActivity;
+import com.example.expendituretracker.R;
 import com.github.ematiyuk.expensetracer.utils.Utils;
 
 import java.util.Calendar;
@@ -146,17 +146,17 @@ public class ReportFragment extends Fragment implements LoaderManager.LoaderCall
         switch (id) {
             case SUM_LOADER_ID:
                 if (reportType == DATE_REPORT) {
-                    uri = ExpensesWithCategories.SUM_DATE_CONTENT_URI;
+                    uri = ExpensesContract.ExpensesWithCategories.SUM_DATE_CONTENT_URI;
                 } else if (reportType == DATE_RANGE_REPORT) {
-                    uri = ExpensesWithCategories.SUM_DATE_RANGE_CONTENT_URI;
+                    uri = ExpensesContract.ExpensesWithCategories.SUM_DATE_RANGE_CONTENT_URI;
                 }
                 break;
             case LIST_LOADER_ID:
                 mProgressBar.setVisibility(View.VISIBLE);
                 if (reportType == DATE_REPORT) {
-                    uri = ExpensesWithCategories.DATE_CONTENT_URI;
+                    uri = ExpensesContract.ExpensesWithCategories.DATE_CONTENT_URI;
                 } else if (reportType == DATE_RANGE_REPORT) {
-                    uri = ExpensesWithCategories.DATE_RANGE_CONTENT_URI;
+                    uri = ExpensesContract.ExpensesWithCategories.DATE_RANGE_CONTENT_URI;
                 }
                 break;
         }
@@ -174,7 +174,7 @@ public class ReportFragment extends Fragment implements LoaderManager.LoaderCall
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         switch (loader.getId()) {
             case SUM_LOADER_ID:
-                int valueSumIndex = data.getColumnIndex(Expenses.VALUES_SUM);
+                int valueSumIndex = data.getColumnIndex(ExpensesContract.Expenses.VALUES_SUM);
                 data.moveToFirst();
                 float valueSum = data.getFloat(valueSumIndex);
                 mTotalValueTextView.setText(Utils.formatToCurrency(valueSum));

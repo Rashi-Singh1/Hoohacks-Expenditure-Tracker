@@ -1,15 +1,18 @@
+package com.example.expendituretracker.fragments;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.ematiyuk.expensetracer.R;
-import com.github.machinarius.preferencefragment.PreferenceFragment;
+import com.example.expendituretracker.R;
+
 
 public class SettingsFragment extends PreferenceFragment {
     public static final String KEY_PREF_CURRENCY = "pref_currency";

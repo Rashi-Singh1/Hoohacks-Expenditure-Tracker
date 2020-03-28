@@ -1,3 +1,5 @@
+package com.example.expendituretracker.providers;
+
 import android.net.Uri;
 import android.provider.BaseColumns;
 
