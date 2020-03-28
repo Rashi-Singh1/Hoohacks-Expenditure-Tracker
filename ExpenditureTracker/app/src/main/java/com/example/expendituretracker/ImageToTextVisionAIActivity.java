@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -25,6 +27,8 @@ public class ImageToTextVisionAIActivity extends AppCompatActivity {
     SurfaceView cameraView;
     TextView textView;
     CameraSource cameraSource;
+    String final_output;
+    int output_ready = 0;
     final int RequestCameraPermissionID = 1001;
 
     @Override
@@ -79,11 +83,15 @@ public class ImageToTextVisionAIActivity extends AppCompatActivity {
                                     RequestCameraPermissionID);
                             return;
                         }
-                        cameraSource.start(cameraView.getHolder());
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        if (output_ready == 0) {
+                            output_ready = 1;
+                            cameraSource.start(cameraView.getHolder());
+                        }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
                 }
+
 
                 @Override
                 public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
@@ -119,6 +127,7 @@ public class ImageToTextVisionAIActivity extends AppCompatActivity {
                                     stringBuilder.append("\n");
                                 }
                                 textView.setText(stringBuilder.toString());
+
                             }
                         });
                     }
