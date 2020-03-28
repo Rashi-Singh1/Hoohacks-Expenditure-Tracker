@@ -31,4 +31,17 @@
         android:textSize="17dp"
         />
 
+    <Button
+        android:id="@+id/home_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan_bill"
+        android:layout_marginTop="20dp"
+        android:text="Take to home page"
+        android:textAllCaps="false"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:textSize="17dp"
+        />
+
 </RelativeLayout>
