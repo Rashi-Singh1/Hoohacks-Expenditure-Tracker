@@ -1,3 +1,5 @@
+package com.example.expendituretracker.activities;
+
 import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.DialogInterface;
@@ -5,7 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +27,7 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
 import com.example.expendituretracker.R;
+import com.example.expendituretracker.providers.ExpensesContract;
 
 
 public class CategoryFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -73,7 +75,7 @@ public class CategoryFragment extends Fragment implements LoaderManager.LoaderCa
 
         mAdapter = new SimpleCursorAdapter(getActivity(),
                 R.layout.category_list_item, null,
-                new String[] { Categories.NAME },
+                new String[] { ExpensesContract.Categories.NAME },
                 new int[] { R.id.category_name_list_item}, 0);
 
         mCategoriesView.setAdapter(mAdapter);
@@ -179,7 +181,7 @@ public class CategoryFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     private int deleteAssociatedExpenses(long categoryId) {
-        String selection = Expenses.CATEGORY_ID + " = ?";
+        String selection = ExpensesContract.Expenses.CATEGORY_ID + " = ?";
         String[] selectionArgs = { String.valueOf(categoryId) };
 
         return getActivity().getContentResolver().delete(
@@ -220,7 +222,7 @@ public class CategoryFragment extends Fragment implements LoaderManager.LoaderCa
 
     private void prepareCategoryToEdit(long id) {
         Intent intent = new Intent(getActivity(), CategoryEditActivity.class);
-        intent.putExtra(CategoryEditFragment.EXTRA_EDIT_CATEGORY, id);
+        intent.putExtra(com.example.expendituretracker.activities.CategoryEditFragment.EXTRA_EDIT_CATEGORY, id);
         startActivity(intent);
     }
 }

@@ -7,7 +7,7 @@ public final class ExpensesContract {
     /**
      * The authority for the expenses provider
      */
-    public static final String AUTHORITY = "com.github.ematiyuk.expensetracer.provider";
+    public static final String AUTHORITY = "com.example.expendituretracker.provider";
     /**
      * The content:// style URI for expenses provider
      */

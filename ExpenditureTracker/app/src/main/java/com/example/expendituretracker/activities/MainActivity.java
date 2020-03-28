@@ -1,5 +1,6 @@
 package com.example.expendituretracker.activities;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,14 +9,13 @@ import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ReportFragment;
 
 import com.example.expendituretracker.R;
+import com.example.expendituretracker.fragments.CategoryFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends BaseFragmentActivity {
@@ -83,7 +83,7 @@ public class MainActivity extends BaseFragmentActivity {
         if (!closeNavigationDrawer()) {
             Fragment currentFragment = getSupportFragmentManager()
                     .findFragmentById(R.id.content_frame);
-            if (!(currentFragment instanceof TodayFragment)) {
+            if (!(currentFragment instanceof com.example.expendituretracker.activities.TodayFragment)) {
                 loadTodayFragment();
             } else {
                 // If current fragment is TodayFragment then exit
@@ -112,7 +112,7 @@ public class MainActivity extends BaseFragmentActivity {
         closeNavigationDrawer();
         switch(menuItem.getItemId()) {
             case R.id.nav_today:
-                loadFragment(TodayFragment.class, menuItem.getItemId(), menuItem.getTitle());
+                loadFragment(com.example.expendituretracker.activities.TodayFragment.class, menuItem.getItemId(), menuItem.getTitle());
                 break;
             case R.id.nav_report:
                 loadFragment(ReportFragment.class, menuItem.getItemId(), menuItem.getTitle());
@@ -124,7 +124,7 @@ public class MainActivity extends BaseFragmentActivity {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 break;
             default:
-                loadFragment(TodayFragment.class, menuItem.getItemId(), menuItem.getTitle());
+                loadFragment(com.example.expendituretracker.activities.TodayFragment.class, menuItem.getItemId(), menuItem.getTitle());
         }
     }
 
@@ -158,7 +158,7 @@ public class MainActivity extends BaseFragmentActivity {
     }
 
     private void loadTodayFragment() {
-        loadFragment(TodayFragment.class, R.id.nav_today,
+        loadFragment(com.example.expendituretracker.activities.TodayFragment.class, R.id.nav_today,
                 getResources().getString(R.string.nav_today));
     }
 }

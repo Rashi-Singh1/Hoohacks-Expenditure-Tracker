@@ -1,4 +1,4 @@
-package com.example.expendituretracker.adapters.;
+package com.example.expendituretracker.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.example.expendituretracker.R;
+import com.example.expendituretracker.providers.ExpensesContract;
 
 public class SectionExpenseAdapter extends SectionCursorAdapter {
     private String mCurrency;
@@ -24,7 +24,7 @@ public class SectionExpenseAdapter extends SectionCursorAdapter {
     @Override
     protected Object getSectionFromCursor(Cursor cursor) {
         String dateStr = cursor.getString(cursor.getColumnIndexOrThrow(ExpensesContract.Expenses.DATE));
-        return com.github.ematiyuk.expensetracer.utils.Utils.getSystemFormatDateString(mContext, dateStr);
+        return com.example.expendituretracker.utils.Utils.getSystemFormatDateString(mContext, dateStr);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class SectionExpenseAdapter extends SectionCursorAdapter {
         String categoryName = cursor.getString(cursor.getColumnIndexOrThrow(ExpensesContract.Categories.NAME));
 
         // Populate views with extracted values
-        tvExpenseValue.setText(Utils.formatToCurrency(expValue));
+        tvExpenseValue.setText(com.example.expendituretracker.utils.Utils.formatToCurrency(expValue));
         tvExpenseCatName.setText(categoryName);
         tvExpenseCurrency.setText(mCurrency);
     }

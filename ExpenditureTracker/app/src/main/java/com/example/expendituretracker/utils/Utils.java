@@ -1,4 +1,4 @@
-package com.github.ematiyuk.expensetracer.utils;
+package com.example.expendituretracker.utils;
 
 import android.content.Context;
 

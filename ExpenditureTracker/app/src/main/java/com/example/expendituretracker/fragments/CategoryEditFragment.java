@@ -1,9 +1,10 @@
+package com.example.expendituretracker.activities;
+
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,10 +22,11 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
 import com.example.expendituretracker.R;
+import com.example.expendituretracker.providers.ExpensesContract;
 
 
 public class CategoryEditFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
-    public static final String EXTRA_EDIT_CATEGORY = "com.github.ematiyuk.expensetracer.edit_category";
+    public static final String EXTRA_EDIT_CATEGORY = "com.example.expendituretracker.edit_category";
 
     private EditText mCatNameEditText;
     private long mExtraValue;

@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.expendituretracker.R;
+import com.example.expendituretracker.providers.ExpensesContract;
 
 
 public class ExpenseDbHelper extends SQLiteOpenHelper {

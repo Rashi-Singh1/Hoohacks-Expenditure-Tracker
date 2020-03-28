@@ -1,20 +1,15 @@
-package com.example.expendituretracker.adapters.;
+package com.example.expendituretracker.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import android.widget.TextView;
 
 import com.example.expendituretracker.R;
+import com.example.expendituretracker.providers.ExpensesContract;
 
 public class SimpleExpenseAdapter extends CursorAdapter {
     private String mCurrency;
@@ -47,7 +42,7 @@ public class SimpleExpenseAdapter extends CursorAdapter {
         String categoryName = cursor.getString(cursor.getColumnIndexOrThrow(ExpensesContract.Categories.NAME));
 
         // Populate views with extracted values
-        tvExpenseValue.setText(Utils.formatToCurrency(expValue));
+        tvExpenseValue.setText(com.example.expendituretracker.utils.Utils.formatToCurrency(expValue));
         tvExpenseCatName.setText(categoryName);
         tvExpenseCurrency.setText(mCurrency);
     }

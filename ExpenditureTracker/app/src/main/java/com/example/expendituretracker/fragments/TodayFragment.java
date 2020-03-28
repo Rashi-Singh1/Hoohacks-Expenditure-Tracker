@@ -1,3 +1,4 @@
+package com.example.expendituretracker.activities;
 import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.DialogInterface;
@@ -7,7 +8,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.loader.app.LoaderManager;
@@ -28,8 +27,11 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
 import com.example.expendituretracker.R;
+import com.example.expendituretracker.activities.ExpenseEditActivity;
+import com.example.expendituretracker.adapters.SimpleExpenseAdapter;
 import com.example.expendituretracker.fragments.ExpenseEditFragment;
 import com.example.expendituretracker.fragments.SettingsFragment;
+import com.example.expendituretracker.providers.ExpensesContract;
 
 import java.util.Date;
 
@@ -74,7 +76,7 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
                 prepareExpenseToCreate();
             }
         });
-        mTotalExpSumTextView.setText(com.github.ematiyuk.expensetracer.utils.Utils.formatToCurrency(0.0f));
+        mTotalExpSumTextView.setText(com.example.expendituretracker.utils.Utils.formatToCurrency(0.0f));
 
         registerForContextMenu(mExpensesView);
 
@@ -151,7 +153,7 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
         }
 
         // Retrieve today's date string
-        String today = com.github.ematiyuk.expensetracer.utils.Utils.getDateString(new Date());
+        String today = com.example.expendituretracker.utils.Utils.getDateString(new Date());
         String[] selectionArgs = { today };
 
         return new CursorLoader(getActivity(),
@@ -170,7 +172,7 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
                 int valueSumIndex = data.getColumnIndex(ExpensesContract.Expenses.VALUES_SUM);
                 data.moveToFirst();
                 float valueSum = data.getFloat(valueSumIndex);
-                mTotalExpSumTextView.setText(com.github.ematiyuk.expensetracer.utils.Utils.formatToCurrency(valueSum));
+                mTotalExpSumTextView.setText(com.example.expendituretracker.utils.Utils.formatToCurrency(valueSum));
                 break;
 
             case LIST_LOADER_ID:
@@ -186,7 +188,7 @@ public class TodayFragment extends Fragment implements LoaderManager.LoaderCallb
     public void onLoaderReset(Loader<Cursor> loader) {
         switch (loader.getId()) {
             case SUM_LOADER_ID:
-                mTotalExpSumTextView.setText(com.github.ematiyuk.expensetracer.utils.Utils.formatToCurrency(0.0f));
+                mTotalExpSumTextView.setText(com.example.expendituretracker.utils.Utils.formatToCurrency(0.0f));
                 break;
             case LIST_LOADER_ID:
                 mAdapter.swapCursor(null);

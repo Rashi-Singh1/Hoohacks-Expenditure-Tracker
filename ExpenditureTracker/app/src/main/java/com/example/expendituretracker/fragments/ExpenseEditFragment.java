@@ -5,8 +5,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-
-
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,7 +18,6 @@ import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.fragment.app.Fragment;
@@ -29,13 +26,14 @@ import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
 import com.example.expendituretracker.R;
-import com.github.ematiyuk.expensetracer.utils.Utils;
+import com.example.expendituretracker.providers.ExpensesContract;
+import com.example.expendituretracker.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class ExpenseEditFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
-    public static final String EXTRA_EDIT_EXPENSE = "com.github.ematiyuk.expensetracer.edit_expense";
+    public static final String EXTRA_EDIT_EXPENSE = "com.example.expendituretracker.edit_expense";
 
     private static final int EXPENSE_LOADER_ID = 1;
     private static final int CATEGORIES_LOADER_ID = 0;

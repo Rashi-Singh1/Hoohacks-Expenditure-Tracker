@@ -1,10 +1,10 @@
+package com.example.expendituretracker.fragments;
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,10 +22,13 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 
-
 import com.example.expendituretracker.MainActivity;
 import com.example.expendituretracker.R;
-import com.github.ematiyuk.expensetracer.utils.Utils;
+import com.example.expendituretracker.adapters.SectionExpenseAdapter;
+import com.example.expendituretracker.fragments.DatePickerFragment;
+import com.example.expendituretracker.fragments.SettingsFragment;
+import com.example.expendituretracker.providers.ExpensesContract;
+import com.example.expendituretracker.utils.Utils;
 
 import java.util.Calendar;
 import java.util.Date;
