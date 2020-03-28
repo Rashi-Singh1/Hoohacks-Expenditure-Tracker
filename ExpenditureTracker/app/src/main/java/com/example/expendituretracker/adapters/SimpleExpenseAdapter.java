@@ -1,14 +1,20 @@
+package com.example.expendituretracker.adapters.;
+
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v4.widget.CursorAdapter;
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.CursorAdapter;
 
-import com.github.ematiyuk.expensetracer.providers.ExpensesContract;
-import com.github.ematiyuk.expensetracer.R;
-import com.github.ematiyuk.expensetracer.utils.Utils;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import com.example.expendituretracker.R;
 
 public class SimpleExpenseAdapter extends CursorAdapter {
     private String mCurrency;
