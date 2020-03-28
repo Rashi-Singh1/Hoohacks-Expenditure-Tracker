@@ -82,18 +82,18 @@ public class ScanBillActivity extends AppCompatActivity {
                 Log.d("Error : ", ex.getMessage());
             }
 
-//            // Continue only if the File was successfully created
-//            if (photoFile != null) {
-//                Uri photoURI = FileProvider.getUriForFile(this,
-//                        "com.example.expendituretracker.fileprovider",
-//                        photoFile);
-//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-//                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-//            }
-//            else{
-//                Toast.makeText(ScanBillActivity.this,"Error: photo file NULL", Toast.LENGTH_SHORT).show();
-//                Log.d("Error : ","photoFile null");
-//            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.example.expendituretracker.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
+            else{
+                Toast.makeText(ScanBillActivity.this,"Error: photo file NULL", Toast.LENGTH_SHORT).show();
+                Log.d("Error : ","photoFile null");
+            }
         }
     }
 
