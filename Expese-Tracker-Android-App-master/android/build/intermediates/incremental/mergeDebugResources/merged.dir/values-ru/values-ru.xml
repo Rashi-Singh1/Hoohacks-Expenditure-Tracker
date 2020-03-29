@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_currency_list_titles">
+        <item>Доллар США</item>
+        <item>Евро</item>
+        <item>Фунт стерлингов</item>
+        <item>Канадский доллар</item>
+        <item>Австралийский доллар</item>
+        <item>Украинская гривна</item>
+        <item>Российский рубль</item>
+    </string-array>
+    <string-array name="pref_currency_list_values">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>CAD</item>
+        <item>AUD</item>
+        <item>UAH</item>
+        <item>RUB</item>
+    </string-array>
+    <plurals name="expenses_deleted_plurals_msg">
+        <item quantity="one">Удалено расходов: %d</item>
+        <item quantity="few">Удалено расходов: %d</item>
+        <item quantity="many">Удалено расходов: %d</item>
+    </plurals>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Перейти на главный экран"</string>
+    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
+    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Перейти вверх"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Другие параметры"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Готово"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Показать все"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Выбрать приложение"</string>
+    <string msgid="121134116657445385" name="abc_capital_off">"ОТКЛ."</string>
+    <string msgid="3405795526292276155" name="abc_capital_on">"ВКЛ."</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"Поиск"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Удалить запрос"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Поисковый запрос"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Поиск"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Отправить запрос"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Голосовой поиск"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Открыть доступ"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Открыть доступ пользователю %s"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Свернуть"</string>
+    <string name="add_category">Добавить категорию</string>
+    <string name="add_expense">Новый расход</string>
+    <string name="app_name">Трекер Расходов</string>
+    <string name="cat_clothes">Одежда</string>
+    <string name="cat_entertainment">Развлечения</string>
+    <string name="cat_food">Питание</string>
+    <string name="cat_general">Общее</string>
+    <string name="cat_health">Здоровье</string>
+    <string name="cat_household">Дом</string>
+    <string name="cat_hygiene">Гигиена</string>
+    <string name="cat_pets">Питомцы</string>
+    <string name="cat_presents">Подарки</string>
+    <string name="cat_sports">Спорт</string>
+    <string name="cat_transportation">Транспорт</string>
+    <string name="category_added">Категория добавлена</string>
+    <string name="category_deleted">Категория удалена</string>
+    <string name="category_name_string">Название категории</string>
+    <string name="category_updated">Категория обновлена</string>
+    <string name="default_string">По умолчанию</string>
+    <string name="delete_cat_dialog_msg">Все связанные с этой категорией расходы также будут удалены. Вы уверены, что хотите продолжить?</string>
+    <string name="delete_category">Удалить категорию</string>
+    <string name="delete_exp_dialog_msg">Вы уверены, что хотите удалить расход?</string>
+    <string name="delete_expense">Удалить расход</string>
+    <string name="delete_string">Удалить</string>
+    <string name="done_string">Готово</string>
+    <string name="drawer_close">Закрыть панель навигации</string>
+    <string name="drawer_open">Открыть панель навигации</string>
+    <string name="edit_category">Редактировать категорию</string>
+    <string name="edit_expense">Редактировать расход</string>
+    <string name="error_empty_field">Пустое поле не допустимо</string>
+    <string name="error_incorrect_input">Неверный ввод</string>
+    <string name="error_zero_value">Нулевое значение не допустимо</string>
+    <string name="expense_added">Расход добавлен</string>
+    <string name="expense_category_name_string">Категория</string>
+    <string name="expense_deleted">Расход удален</string>
+    <string name="expense_updated">Расход обновлен</string>
+    <string name="filter_date_expenses">За %s</string>
+    <string name="filter_date_range_expenses">%1$s - %2$s</string>
+    <string name="filter_expenses">Фильтр</string>
+    <string name="filter_months_expenses">Расходы за месяц</string>
+    <string name="filter_option_date">За Дату</string>
+    <string name="filter_option_month">За Месяц</string>
+    <string name="filter_option_range">За Период времени</string>
+    <string name="filter_option_today">За Сегодня</string>
+    <string name="filter_option_week">За Неделю</string>
+    <string name="filter_todays_expenses">Расходы за сегодня</string>
+    <string name="filter_weeks_expenses">Расходы за неделю</string>
+    <string name="nav_categories">Категории расходов</string>
+    <string name="nav_report">Отчеты о расходах</string>
+    <string name="nav_settings">Настройки</string>
+    <string name="nav_today">Сегодня</string>
+    <string name="no_categories_string">&lt;Нет категорий></string>
+    <string name="no_expenses">Расходов нет.</string>
+    <string name="pref_currency_default">USD</string>
+    <string name="pref_currency_title">Валюта</string>
+    <string msgid="146198913615257606" name="search_menu_title">"Поиск"</string>
+    <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">">999"</string>
+    <string name="today_expenses">Список расходов</string>
+    <string name="today_total">Всего за сегодня</string>
+    <string name="total_string">Всего</string>
+</resources>
